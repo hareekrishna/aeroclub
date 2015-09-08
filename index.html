@@ -1,0 +1,446 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>AEROCLUB</title>
+    <script type="text/javascript" src="js/jquery.min.js" ></script>
+    <link type="text/css" href="css/index.css" rel="stylesheet" />
+</head>
+
+<body>
+<script> 
+$(window).load(function(){
+	 $(".page_load img").fadeOut();
+	 sec_home_on();	
+	 $("body").animate({'background-color':'#DCDCDC'});
+	 $(".global_container").css({"display":"inline-block"});
+ });
+ var a=b="";
+function sec_home_on(){
+	$(document).find(".home2_main_outer div").fadeOut();
+	$("body").css({'background-color':'#DCDCDC'});
+	showby_anim_fixed(".rolling_div",-800);
+	var settings={
+		'div':".oo",
+		'rot_value':4,		
+		'seperator':'#',
+		'include_seperator':true,
+		'host_div':'.i',
+		'div_tobeadded':{
+							0:'design',
+							1:'fabricate',
+							2:'fly'
+							
+						}
+				};
+	if($(".i span").length==0)
+		bulk(settings);
+	showby_anim(".name",20);
+	$(".j,.k").children().each(function(index, element) {
+ 	   setTimeout(function(){ 
+		 $(element).animate({'margin-left':-20},500,function(){
+			 $(element).fadeOut();
+			 setTimeout(function(){
+				 $(".j,.k").find(element).remove();
+			 },20*index);
+		  });
+      },200*index/10); 
+	});	
+	$(".rolling").css({'transition':'1s'});
+    $(".i span").animate({"font-size":50,"top":45,'height':300,'color':"black"},800);
+}
+var id;
+function sec_home2_on(id){
+	var settings={
+		'div':".oo2",
+		'seperator':'#',
+		'host_div':'.j',
+		'rot_value':4.5,
+		'include_seperator':false,
+		'div_tobeadded':{
+							0:'multirotor',
+							1:'helicopter',
+							2:'planes',
+							3:'hovercrafts'
+							
+						}
+				};
+	var settings2={
+		'div':".oo3",
+		'seperator':'#',
+		'host_div':'.k',
+		'rot_value':3.5,
+		'include_seperator':false,
+		'div_tobeadded':{
+							0:'how_does_it_work',
+							1:'tutorials',
+							2:'build_plans',
+							3:'forum'
+							
+						}
+				};
+	if($(".j span").length==0)
+		bulk(settings);
+	if($(id).css("display")=="none"){
+		showby_anim_off(".home2_main_outer",20);
+		$("#home2 img").css({'transform':'rotateX(-90deg)'}).fadeOut();
+		$(id).find("img").fadeIn().css({'transform':'rotateX(0deg)'});
+		setTimeout(function(){
+			var classe=id.replace("#",".");
+			$(classe).css({"color":"rgb(35, 159, 214)"});
+				showby_anim(id,20);
+			$(id).find(".title h1").css({"border-bottom":"1px dashed white"});
+			if($(".k span").length==0)
+				bulk(settings2);
+			$("span").find(".how_does_it_work").css({"color":"rgb(35, 159, 214)"});
+		},100);	
+	}
+	}
+function get_class(settings){
+	var class_name=settings['div_tobeadded'][0];
+	var c=0;
+	$.each(settings['div_tobeadded'],function(index,value){
+		if(settings['a']==settings['div_tobeadded'][index]){
+			var t=parseInt(index)+1;
+			class_name=settings['div_tobeadded'][t];
+			
+			
+		}
+		c=c+1;
+	});
+	
+	if(settings['a']==settings['div_tobeadded'][c-1]){
+		class_name=settings['div_tobeadded'][0];
+			}
+	return class_name;
+}	
+function g(settings){ 
+	var p=settings['div']+"temp";
+	var f;
+	if(settings['include_seperator']) 
+		f=settings['rot_value']*settings['n']+"deg";
+	else 
+		f=settings['rot_value']*settings['n']-settings['rot_value']+"deg";
+	a=a+settings['chars'];
+	if(settings['chars']==settings['seperator']){
+		var regex1= new RegExp(settings['seperator'],'gi');
+		var te=/ /gi;
+		a=a.replace(regex1,"").replace(te,"");
+		settings['a']=a;
+		c=get_class(settings);
+		a="";
+	}
+	if(settings['include_seperator'] || settings['chars'] !=settings['seperator']){
+		var q="<span class='"+c+"'>"+settings['chars']+"</span>";
+		setTimeout(function(){ 
+			$(q).appendTo(settings['host_div']).css({'margin-top':15,'margin-left':15}).fadeIn(50).animate({'margin':0},500).css({'transform':'rotate('+f+')'});
+		},50*settings['n']);
+		$(document).find(settings['host_div']).on("click","span",function(){		
+			$(settings['host_div']).find("span").css({'color':'inherit'});
+			var classe=$(this).attr("class");
+			$("span[class*="+classe+"]").css({'color':'rgb(35, 159, 214)'});
+		});
+	}
+}
+function bulk(settings){
+	var t=$(settings['div']).html();
+	var y=t.toLowerCase().split("");
+	for(var i=0;i<y.length;i++){
+		settings['chars']=y[i];
+		settings['n']=i;
+		g(settings);
+	}
+}
+var position,value;
+function showby_anim_fixed(section_name,value){
+	var child=$(section_name).children();
+	$(child).each(function(index,element){
+		setTimeout(function(){	
+			$(section_name).show();
+			$(element).hide().css({'left':value}).fadeIn(300*index).animate({'left':0},200,function(){
+				rot(element,1,index);
+			});
+		},10*index);
+	});
+}
+function showby_anim_fixed_off(section_name,value){
+	var child=$(section_name).children();
+	$(child).each(function(index,element){
+		setTimeout(function(){	
+			$(section_name).show();
+			$(element).animate({'left':value},200).fadeOut(200);
+		},10*index);
+	});
+}
+function showby_anim(section_name,value){
+	var child=$(section_name).children();
+	$(child).each(function(index,element){ 
+		setTimeout(function(){	
+			$(section_name).fadeIn(0);
+			var original_value= parseInt($(element).css("margin-top").replace("px",""));
+			added_value=original_value + value; 
+			$(element).hide().css({'margin-top':added_value}).fadeIn(50*index).animate({'margin-top':original_value},300);
+		},20*index);
+	});
+}
+function showby_anim_off(section_name,value){
+	var child=$(section_name).children();
+	$(child).each(function(index,element){
+		setTimeout(function(){	
+			var original_value= parseInt($(element).css("margin-top").replace("px",""));
+			var  added_value=original_value + value; 
+			$(element).animate({'margin-top':added_value},300).fadeOut(10*index);
+			$(element).animate({'margin-top':original_value},0);
+		},20*index);
+	});
+}
+var rot_ele;
+var rot_val=1;
+var rot_int=1;
+var n;
+function rot(rot_ele,rot_val,n){
+	rot_val=rot_val*-1; 
+	rot_int=rot_val*5*(n+1)/1.8; 
+	setTimeout(function(){	
+		$(rot_ele).css({'transform':'rotate('+rot_int+'deg)','transition':'15s'});
+			rot(rot_ele,rot_val,n);
+	},5000);
+}
+$(function(){
+	$(document).on("click",".name button",function(){
+		showby_anim_fixed_off(".rolling_div",-800);
+		showby_anim_off(".name",20);
+		setTimeout(function(){
+			$(".i span").animate({'height':250,'top':100,'font-size':34,'color':'#333'});
+			$("body").css({'background-color':'#323131'});
+			sec_home2_on("#multirotor");
+			$(".desc p").fadeIn();
+		},300);
+	});	
+	$(document).on("click",".j span",function(){
+		var classe=$(this).attr("class");
+		var id="#"+classe;
+		sec_home2_on(id);
+	});
+	$(document).find(".i").on("click","span",function(){
+		if($(document).find(".j span").length !=0)
+		sec_home_on();
+	});
+	$(document).find(".k").on("click",".how_does_it_work",function(){
+		$(".options_desc").remove();
+		if($(".desc p").css("display") == "none"){
+			$(".desc p").fadeIn();
+			}
+		});
+	$(document).find(".k").on("click",".tutorials",function(){
+		var o="<h1>TUTORIALS</h1><span>coming soon..</span><br/><br/>"+
+			  "<span>A step wise explanation of principle behind construction and controlling by..<br/>"+
+			  "*articles,<br/>*pictorial representations,<br/>*videos</span>"+
+			  "";
+		
+			$(".desc p").fadeOut(0);
+			$(".options_desc").remove();
+			$(".desc").append("<div class='options_desc'>"+o+"</div>").hide(0).fadeIn(200);
+		
+		});
+	$(document).find(".k").on("click",".forum",function(){
+		var o="<h1>FORUM</h1><span>coming soon..</span><br/><br/>"+
+			  "<span>Join as a member,ask your questions,share your knowledge and<br/>"+
+			  "Create your oppertunities worldwide."+
+			  "";
+			$(".desc p").fadeOut(0);
+			$(".options_desc").remove();
+			$(".desc").append("<div class='options_desc'>"+o+"</div>").hide(0).fadeIn(200);
+		});
+	$(document).on("click",".about_button a",function(){
+		if($(this).html()=="about"){
+			$(this).css({"transform":"rotate(180deg)"});
+			showby_anim_fixed_off(".rolling_div",-800);
+			showby_anim_off(".name",20);
+			showby_anim_off(".home2_main_outer",20);
+	
+			$(".i,.j,.k").children().each(function(index, element) {
+		   setTimeout(function(){ 
+			 $(element).animate({'margin-left':-20},500,function(){
+				 $(element).fadeOut();
+				 setTimeout(function(){
+					 $(".i,.j,.k").find(element).remove();
+				 },20*index);
+			  });
+			 },200*index/10); 
+			});
+			setTimeout(function(){
+				$(".about_button a").html("close").css({"transform":"rotate(360deg)"});
+					showby_anim("#about",50);
+					$("body").css({"background-color":"#fff"});
+				},500);
+			
+		}
+		else{
+			showby_anim_off("#about",20);
+			setTimeout(function(){
+				$(".about_button a").html("about").css({"transform":"rotate(0deg)"});
+					sec_home_on();
+				},800);
+			
+			}
+	});
+});
+</script>
+<div class="page_load">
+	<img src="pics/loader.gif" alt="loading.." />
+</div>
+<div class="global_container">
+	<div class="about_button">
+    	<div>
+        	<a>about</a>
+        </div>
+    </div>
+	<section id="home">
+        <div class="rolling_div">
+         	<img class="rolling" src="pics/3.png">
+        	 <img class="rolling" src="pics/2.png">
+        	 <img class="rolling" src="pics/1.png">
+         	<img class="rolling" style="top:-30px" src="pics/0.png">
+        </div>
+        <div class="bulk" >
+            <p class="i"></p>
+                <p class="oo" style="display:none"># d e s i g n    # f a b r i c a t e   # f l y</p>
+        </div>
+       <div class="content_main_outer">
+       		<div class="content_main_inner">
+            	<div class="content_main">
+                	<div class="name">
+                    	<div>
+                    		<h1>AEROCLUB</h1>
+                        </div><br/>
+                        <div>
+                            <p>Club dedicated to get inspired,<br/>learn,build and share the ideas on<br/> 
+                            Remote Controlled aircrafts.</p>
+                        </div><br/>
+                        <div>
+                     		<button>Get Started.</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+       </div> 
+    </section>
+    <section id="home2">
+    	
+        <div class="home2_main_outer">
+        	<div id="multirotor">
+            	<div class="back_img">
+                	<img src="pics/multirotor.jpg">
+                </div>
+                <div class="title">
+                	<h1>MULTI-ROTORS</h1>
+                </div>
+                <div class="desc">
+                	<p> A multicopter is a mechanically simple aerial vehicle <br/>
+                    whose motion is controlled by speeding or slowing multiple <br/>
+                    downward thrusting motor/propeller units.<br/>
+                    A multirotor is a rotorcraft with several rotors like three rotors,<br/>
+                    four rotors, six rotors and eight rotors etc and we call the aircrafts<br/>
+                    tricopter, quadcopter, hexacopter and octocopter respectively. <br/>
+                    <span>Sounds interesting huh? Get Started right now.</span>
+                    </p>
+                </div>
+            </div>
+            <div id="helicopter">
+            	<div class="back_img">
+                	<img src="pics/chopper.jpg">
+                </div>
+                <div class="title">
+                	<h1>HELICOPTER</h1>
+                </div>
+                <div class="desc">
+                  <p>Radio-controlled helicopters are model aircraft which are distinct from<br/>
+                     RC airplanes because of the differences in construction,aerodynamics and<br/>
+                     flight training.<br/>
+                     These have more aerobatic capabilities.Controlling all motionsin unison
+                     enables the helicopter to perform the same maneuvers as full-sized<br/>
+                     helicopters,such as hoveringand backwards flight,inverted flight. <br/>
+                     Just like full sized helicopters,model helicopter rotors turn at high speeds.<br/>
+                    <span> Have a desire to experience,flying an helicopter? Then RC Helis are for you.</span>
+					 </p>
+                </div>
+                
+            </div>
+        
+         <div id="planes">
+            	<div class="back_img">
+                	<img src="pics/planes.jpg">
+                </div>
+                <div class="title">
+                	<h1>PLANES</h1>
+                </div>
+                <div class="desc">
+                	<p>Rc  airplane  is a small flying machine that is controlled remotely<br/>
+                     by an operator on the ground using a hand-held radio transmitter.
+                     Servo motors are used to move the control surfaces based on the position of joysticks on the transmitter. <br/>
+                     The control surfaces, in turn, affect the orientation of the plane. <br/>
+                     Scientific, government and military organizations are also utilizing RC<br/>
+                     aircrafts for experiments, gathering weather readings, aerodynamic <br/> 
+                     modelling and testing, and even using them as drones or spy planes.<br/>
+                     <span>Wanted to become pilot and fly a plane? There you go.</span>
+                   	</p>
+
+                </div>
+            </div>
+          <div id="hovercrafts">
+            	<div class="back_img">
+                	<img src="pics/hovercraft.jpg">
+                </div>
+                <div class="title">
+                	<h1>HOVER-CRAFT</h1>
+                </div>
+                <div class="desc">
+                	<p>A hovercraft, also known as an air-cushion vehicle or ACV, is a craft capable<br/>
+                     of travelling over land, water, mud or ice and other surfaces.<br/>
+                     Hovercraft use blowers to produce a large volume of air below the hull that<br/>
+                     is slightly above atmospheric pressure.<br/>
+                     The pressure difference between the higher pressure air below the hull and lower pressure ambient air above it produces lift, which causes <br/>
+                     the hull to float above the running surface.<br/>
+                     <span>Want to have fun with a machine which runs both on land and water? Why wait then? Build your own hovercraft!</span>
+                     </p>
+
+                </div>
+            </div>
+         </div>
+        
+      
+       
+        <div class="bulk2" >
+            <p class="j"></p>
+                <p class="oo2" style="display:none">#MULTIROTOR #HELICOPTER #PLANES #HOVERCRAFTS</p>
+        </div>
+        <div class="bulk3">
+        	<p class="k"></p>
+            <p class="oo3" style="display:none">#how_does_it_work #tutorials #build_plans #forum</p>
+        </div>
+    </section>
+    <section id="about">
+    	<div class="about">
+			<img src="pics/loader.gif" alt="AEROCLUB" />
+		</div>
+        <div class="about_desc">
+        	<p>Aeroclub was created for the people passionate about flight.<br/>
+               Our goal is to create a platform for the people who wants to build and fly planes,<br/>
+               multirotors and helicopters not only as a<br/>
+               hobby but also for those who want to<br/>
+               achieve professionalism in this field.<br/>
+               Our mission is to develop a community <br/>
+               of people where everyone gets a chance to<br/>
+               share common experiences with others,<br/>
+               in turn, spreading the knowledge and fun in Aero-Modelling.<br/>
+               Aeroclub strives hard to give you the right information regarding<br/>
+               everything about RC stuff and put you in a right path that will lead you to your dreams.<br/>
+               We hope to educate, entertain and give a set of wings to you all as we move forward. Happy flying folks!
+        	</p>
+        </div>
+
+    </section>
+</div>
+</body>
+</html>

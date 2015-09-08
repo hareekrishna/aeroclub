@@ -1,0 +1,210 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+	src:url(../fonts/Intro%20Inline.otf);
+	font-family:intro;
+	}
+body{
+	background-color: #fff;
+	background-image:url(../pics/backpattren.png);
+	font-family:Verdana, Geneva, sans-serif;
+	overflow-y:hidden;
+	overflow:hidden;
+	}
+div{
+	display:inline-block;
+	}
+.global_container{
+	display:none;
+	}
+section{
+	display:inline-block;
+	width:100%;
+	height:100%;
+	}
+.page_load img,.about{
+	position: absolute;
+	top: 260px;
+	left: 570px;
+	opacity:0.7;
+	}
+.about_button a{
+	position: fixed;
+	font: 30px intro;
+	left: 0;
+	top: 332px;
+	z-index: 9999;
+	margin-right: 30px;
+	color: #000;
+	transition: 2s;
+	cursor: pointer;
+	}
+.about_button a:hover{
+	color: rgb(35, 159, 214);
+	}
+.design , .fabricate,.fly{
+	font: 50px intro;
+	height: 300px;
+	position: absolute;
+	width: 20px;
+	left:6px;
+	top:45px;
+	transform-origin: bottom center;
+	-webkit-transform-origin:bottom center;
+	-moz-transform-origin:bottom center;
+	-ms-transform-origin:bottom center;
+	-o-transform-origin:bottom center;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	text-shadow: 1px 1px 2px rgba(27, 27, 27, 0.81);
+	z-index:4;
+
+	}
+.multirotor,.helicopter,.planes,.hovercrafts{
+	font: 30px intro;
+	height: 300px;
+	position: absolute;
+	width: 30px;
+	left:0px;
+	top: 47px;
+	transform-origin: bottom center;
+	-webkit-transform-origin:bottom center;
+	-moz-transform-origin:bottom center;
+	-ms-transform-origin:bottom center;
+	-o-transform-origin:bottom center;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	z-index:2;
+	}
+.how_does_it_work,.tutorials,.build_plans,.forum{
+	font: 20px intro;
+	height: 340px;
+	position: absolute;
+	width: 30px;
+	left:0px;
+	top: 7px;
+	transform-origin: bottom center;
+	-webkit-transform-origin:bottom center;
+	-moz-transform-origin:bottom center;
+	-ms-transform-origin:bottom center;
+	-o-transform-origin:bottom center;
+	display:inline-block;
+	float:left;
+	cursor:pointer;
+	}
+
+.rolling_div{
+	position:absolute;
+	top:0;
+	left:-140px;
+	width:100%;
+	height:100%;
+	}	
+.rolling{
+	position:absolute;
+	transition:1s;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+	-ms-transition:1s;
+	}
+.content_main_outer{
+	position:absolute;
+	right:0;
+	padding:170px 130px 0px 0px;
+	}
+.name h1{
+	cursor:pointer;
+	font-size:60px;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+	-ms-transition:1s;
+    letter-spacing:3px;
+	}
+
+.name p{
+	text-align:right;
+	line-height:20px;
+	font-size:20px;
+	line-height:34px;
+	}
+.name button{
+	background-color: transparent;
+	border: 1px solid #333;
+	padding: 11px 30px 11px 30px;
+	cursor:pointer;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+	-ms-transition:1s;
+	}
+.name div{
+	float:right;
+	}
+.name button:hover{
+	background-color:black;
+	color:white;
+	}
+#multirotor,#helicopter,#planes,#hovercrafts{
+	width:100%;
+	height:100%;
+	display:none;
+	}
+.multirotor,.how_does_it_work{
+	color:rgb(35, 159, 214);
+	}	
+#home2 img{
+	width:1366px;
+	position:absolute;
+	top:0;
+	left:0;
+	opacity:0.3;
+	transition:1s;
+	-webkit-transition:1s;
+	-moz-transition:1s;
+	-o-transition:1s;
+	-ms-transition:1s;
+
+}
+
+.title{
+	padding: 150px 0px 0px 500px;
+	font-size:40px;
+	color: #E8E8E8;
+	letter-spacing: 8px;
+	position:relative;
+	opacity:0.7;
+	}
+.desc p,.options_desc{
+	margin:0;
+	font-size:20px;
+	padding-left: 500px;
+	color: rgb(253, 255, 255);
+	font-family: monospace;
+	line-height: 30px;
+	position:relative;
+	opacity:0.7;
+
+	}
+.options_desc h1{
+	color: rgb(35, 159, 214);
+	margin:0;
+	letter-spacing:5px;
+	}
+.desc p span{
+	z-index:999;
+	color: #5BF1EC;
+	}
+#about{
+	display:none;
+	}
+.about_desc{
+	line-height:35px;
+	margin:100px 0px 0px 200px;
+	font-family: monospace;
+	font-size: 16px;
+
+	}
